@@ -1,0 +1,10 @@
+{
+  "markers": [
+    {
+      "Title": "Armoury",
+      "ID": "001",
+      "Coordinates" : [52.08047199559282, 1.5519507329068511],
+      "Description": "Building used to store munitions for testing."
+    }
+  ]
+}
