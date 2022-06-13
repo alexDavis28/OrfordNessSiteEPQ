@@ -1,4 +1,6 @@
 import json
+import os
+
 title = input("Title: ")
 latitude = float(input("Latitude: "))
 longitude = float(input("Longitude: "))
@@ -31,3 +33,5 @@ with open("app/static/info_base.html", "r") as base, open(f"app/templates/info/{
     base_text = base_text.replace("TITLE", title)
     base_text = base_text.replace("DESCRIPTION", description)
     new_file.write(base_text)
+
+os.mkdir(f"app/static/images/{new_id}")
