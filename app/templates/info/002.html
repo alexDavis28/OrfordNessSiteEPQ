@@ -4,8 +4,53 @@
     <h1 id="page-title" class="title">Airfield Site</h1>
     <br>
     <div id="slideshow">
-        <p>slideshow</p>
+<!--        Iteration for each image-->
+        {% for image_path in images %}
+            <div class="images">
+                <img class="image" src="{{ image_path }}">
+            </div>
+        {% endfor %}
+
+<!--        Buttons-->
+
+        <a class="prev-btn" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next-btn" onclick="changeImage(1)">&#10095;</a>
+
     </div>
     <br>
-    <p class="desc">Airfield site brought by the war departmentr in 1913, and used from 1915 by the Armament Experimental Flight branch of the Central Flying School</p>
+    <div id="information">
+        <p class="desc">Airfield site brought by the war department in 1913, and used from 1915 by the Armament Experimental Flight branch of the Central Flying School</p>
+    </div>
+    <br>
+    <div id="citations">
+        <p>Citations</p>
+    </div>
+
+<script>
+    let current_image = 1;
+    show(current_image)
+
+    function changeImage(i) {
+        show(current_image += i)
+    }
+
+    function show(i) {
+        let n;
+        let images = document.getElementsByClassName("images");
+
+        if (i > images.length) {
+            current_image = 1;
+        }
+
+        if (i < 1) {
+            current_image = images.length;
+        }
+
+        for (n=0; n < images.length; n++) {
+            images[n].style.display = "none";
+        }
+        images[current_image-1].style.display = "block";
+    }
+</script>
+
 {% endblock %}
