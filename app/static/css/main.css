@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+#slideshow {
+    position: relative;
+}
+
+.images {
+    position: relative;
+    display: none;
+    width: 40%;
+}
+
+.image {
+    width: 100%
+}
+
+.prev-btn, .next-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.next-btn {
+  right: 60%;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.caption-text {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}

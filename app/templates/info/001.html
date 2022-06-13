@@ -1,7 +1,56 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Armoury</h1>
+    <h1 id="page-title" class="title">Armoury</h1>
     <br>
-    <p>Building used to safely store munitions.</p>
+    <div id="slideshow">
+<!--        Iteration for each image-->
+        {% for image_path in images %}
+            <div class="images">
+                <img class="image" src="{{ image_path }}">
+            </div>
+        {% endfor %}
+
+<!--        Buttons-->
+
+        <a class="prev-btn" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next-btn" onclick="changeImage(1)">&#10095;</a>
+
+    </div>
+    <br>
+    <div id="information">
+        <p class="desc">Building used to safely store munitions.</p>
+    </div>
+    <br>
+    <div id="citations">
+        <p>Citations</p>
+    </div>
+
+<script>
+    let current_image = 1;
+    show(current_image)
+
+    function changeImage(i) {
+        show(current_image += i)
+    }
+
+    function show(i) {
+        let n;
+        let images = document.getElementsByClassName("images");
+
+        if (i > images.length) {
+            current_image = 1;
+        }
+
+        if (i < 1) {
+            current_image = images.length;
+        }
+
+        for (n=0; n < images.length; n++) {
+            images[n].style.display = "none";
+        }
+        images[current_image-1].style.display = "block";
+    }
+</script>
+
 {% endblock %}

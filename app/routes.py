@@ -2,7 +2,7 @@ from app import app
 from flask import render_template, request
 import folium
 import json
-
+import os
 
 # Home page
 @app.route('/')
@@ -35,5 +35,16 @@ def home():
 
 @app.route("/info")
 def info():
-    file_path = "info/" + request.args.get('id', type=str, default="001") + ".html"
-    return render_template(file_path)
+    page_id = request.args.get('id', type=str, default="001")
+    file_path = "info/" + page_id + ".html"
+
+    images = []
+    image_folder = app.static_folder + "\\images\\" + page_id + "\\"
+
+    for file in os.listdir(image_folder):
+        filename = os.fsdecode(file)
+        image_path = "\\static\\images\\" + page_id + "\\" + filename
+        images.append(image_path)
+    print(images)
+
+    return render_template(file_path, images=images)
